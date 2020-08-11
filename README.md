@@ -1,6 +1,6 @@
 # The High Low Game
 
-Herein lie two files containing the JavaScript code to run the High Low game in our terminal. Both have the same functionality but slightly different appearances and dependencies.
+Herein lie two files containing the JavaScript code to run the High Low game in the terminal. Both have the same functionality but slightly different appearances and dependencies.
 
 ### What is the High Low Game?
 
