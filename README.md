@@ -17,9 +17,9 @@ There are three required dependencies:
 2. npm
 3. The prompt-sync Node module
 
-There is also a fourth optional dependency, the colors Node module. **If you would rather not install colors, please run the file hiLoNoColors.js file.**
+There is also a fourth optional dependency, the colors Node module.
 
-**If you don't mind installing colors.js, please run the hiLo.js file.**
+**If you would rather not install colors, please run the file hiLoNoColors.js file. If you don't mind installing colors.js, please run the hiLo.js file.**
 
 The colors Node module is only used to change colors on strings in the console. Its sole purpose is to improve readability and it is not essential to the functioning of the game itself.
 
