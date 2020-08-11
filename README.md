@@ -10,7 +10,7 @@ If the player's choice is correct, the amount in the pot goes up by 20% (a perce
 
 If the player's choice is wrong, however, the entire pot is forfeit to the house.
 
-## Dependencies and Which File to Run
+## Dependencies and which file to run
 
 There are three required dependencies:
 1. Node.js
