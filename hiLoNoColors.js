@@ -75,8 +75,8 @@ const gameStart = () => {
     amountBet = Number(amountBet);
 
     //Technically speaking, any amount can be taken and used, but I wanted to make it resemble a casino as closely as possible.
-    if (amountBet % 10 !== 0) {
-        console.log(`\nThe house rules change for no one. Please enter a dollar amount that is a multiple of 10.`);
+    if (amountBet % 10 !== 0 | amountBet === 0) {
+        console.log(`\nThe house rules change for no one. Please enter a dollar amount that is a multiple of 10 and above 0.`);
         gameStart();
 
     } else {
@@ -117,7 +117,7 @@ const gameStart = () => {
                         game();
                     } else if (inp === 'n' | inp === 'no') {
                         const payOut = amountBet / 2;
-                        console.log(`\nYour payout is ${Math.floor(payOut)}. Thank you for playing.`);
+                        console.log(`\nYour payout is $${Math.floor(payOut)}. Thank you for playing.`);
                     } else {
                         console.log(`\nPlease answer with ` + "'y' or 'yes'" + ` to start the next round or ` + "'n' or 'no'" + ` to end the game and collect your payout.`);
                         newRound();
@@ -150,7 +150,23 @@ const gameStart = () => {
                 console.log(`\nYour card is the ${playerCard[0]} of ${playerSuit}.\n`);
                 console.log(`It was a tie. The pot rests at $${Math.floor(amountBet)}.`);
 
-                game();
+                const newRound = () => {
+                    console.log('\nWould you like to play another round?\n'.green)
+                    let inp = prompt('[y/n?]: '.blue);
+                    inp = inp.toLowerCase();
+
+                    if (inp === 'y' | inp === 'yes') {
+                        game();
+                    } else if (inp === 'n' | inp === 'no') {
+                        const payOut = amountBet / 2;
+                        console.log(`\nYour payout is $${Math.floor(payOut)}. Thank you for playing.`.green);
+                    } else {
+                        console.log(`\nPlease answer with ` + "'y' or 'yes'".cyan + ` to start the next round or ` + "'n' or 'no'".cyan + ` to end the game and collect your payout.`);
+                        newRound();
+                    };
+                };
+
+                newRound();
             };
         };
 

@@ -76,8 +76,8 @@ const gameStart = () => {
     amountBet = Number(amountBet);
 
     //Technically speaking, any amount can be taken and used, but I wanted to make it resemble a casino as closely as possible.
-    if (amountBet % 10 !== 0) {
-        console.log(`\nThe house rules change for no one. Please enter a dollar amount that is a multiple of 10.`);
+    if (amountBet % 10 !== 0 | amountBet === 0) {
+        console.log(`\nThe house rules change for no one. Please enter a dollar amount that is a multiple of 10 and above 0.`);
         gameStart();
 
     } else {
@@ -118,7 +118,7 @@ const gameStart = () => {
                         game();
                     } else if (inp === 'n' | inp === 'no') {
                         const payOut = amountBet / 2;
-                        console.log(`\nYour payout is ${Math.floor(payOut)}. Thank you for playing.`.green);
+                        console.log(`\nYour payout is $${Math.floor(payOut)}. Thank you for playing.`.green);
                     } else {
                         console.log(`\nPlease answer with ` + "'y' or 'yes'".cyan + ` to start the next round or ` + "'n' or 'no'".cyan + ` to end the game and collect your payout.`);
                         newRound();
@@ -151,7 +151,23 @@ const gameStart = () => {
                 console.log(`\nYour card is the ${playerCard[0]} of ${playerSuit}.\n`.green);
                 console.log(`It was a tie. The pot rests at $${Math.floor(amountBet)}.`.green);
 
-                game();
+                const newRound = () => {
+                    console.log('\nWould you like to play another round?\n'.green)
+                    let inp = prompt('[y/n?]: '.blue);
+                    inp = inp.toLowerCase();
+
+                    if (inp === 'y' | inp === 'yes') {
+                        game();
+                    } else if (inp === 'n' | inp === 'no') {
+                        const payOut = amountBet / 2;
+                        console.log(`\nYour payout is $${Math.floor(payOut)}. Thank you for playing.`.green);
+                    } else {
+                        console.log(`\nPlease answer with ` + "'y' or 'yes'".cyan + ` to start the next round or ` + "'n' or 'no'".cyan + ` to end the game and collect your payout.`);
+                        newRound();
+                    };
+                };
+
+                newRound();
             };
         };
 
@@ -164,7 +180,7 @@ const gameStart = () => {
 };
 
 //Game introduction
-console.log("\nThe High Low game (sometimes referred to as the Hi-Lo game) is a popular card-based game that uses only a single deck of cards.\nIt is commonly played in gambling scenarios.\nThe game involves one player going up against luck made tangible in the form of the dealer. The dealer shuffles the deck and removes two cards, both face-down.\nOne is given to the player and the other retained by the dealer.\nThe dealer then proceeds to show his card to the player and the player is asked to make a choice:".bgGrey + "\nWill the value of the player's card prove to be higher or lower than the value of the dealer's card when it is flipped?".red + "\n\n" + "If the player's choice is correct, the amount in the pot goes up by 20% (a percentage determined by house rules).\nThe player can then choose whether or not to take on another round.\nIf the player chooses not to, 50% of the pot is paid out to the player.\n\nIf the player's choice is wrong, however, the entire pot is forfeit to the house.".bgGrey);
+console.log("\nThe High Low game (sometimes referred to as the Hi-Lo game) is a popular card-based game that uses only a single deck of cards.\nIt is commonly played in gambling scenarios.\nThe game involves one player going up against luck made tangible in the form of the dealer. The dealer shuffles the deck and removes two cards, both face-down.\nOne is given to the player and the other retained by the dealer.\nThe dealer then proceeds to show his card to the player and the player is asked to make a choice:".bgGrey + "\nWill the value of the player's card prove to be higher or lower than the value of the dealer's card when it is flipped?".red + "\n\n" + "The cards with the highest value are the aces of each suit. The lowest valued cards are the 2s of each suit.\nIf the player's choice is correct, the amount in the pot goes up by 20% (a percentage determined by house rules).\nThe player can then choose whether or not to take on another round. The deck is reshuffled between each round.\nIf the player chooses not to, 50% of the pot is paid out to the player.\n\nIf the player's choice is wrong, however, the entire pot is forfeit to the house.".bgGrey);
 
 //Calling gameStart() function to begin the game
 gameStart();
